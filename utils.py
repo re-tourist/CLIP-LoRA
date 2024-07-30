@@ -16,8 +16,12 @@ def clip_classifier(classnames, template, clip_model):
         clip_weights = []
         for classname in classnames:
             # Tokenize the prompts
+            # class_name -> class name
             classname = classname.replace('_', ' ')
+
+            # 把类别填进提示词模板里面
             texts = [t.format(classname) for t in template]
+            
             texts = clip.tokenize(texts).cuda()
             class_embeddings = clip_model.encode_text(texts)
             class_embeddings /= class_embeddings.norm(dim=-1, keepdim=True)
