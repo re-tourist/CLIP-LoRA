@@ -33,7 +33,8 @@ def evaluate_lora(args, clip_model, loader, dataset):
 
 
 def run_lora(args, clip_model, logit_scale, dataset, train_loader, val_loader, test_loader):
-    
+
+    # 设置变量，Ture 为执行评估，对应第138行
     VALIDATION = False
     
     # Textual features
